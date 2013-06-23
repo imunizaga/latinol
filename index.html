@@ -1,52 +1,110 @@
-<!DOCTYPE html>
-<html>
-
+<html lang="en">
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Latinol : A javascript translator from spanish to latinol" />
+    <meta charset="utf-8">
+    <title>Latiñol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 
-    <title>Latinol</title>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="ico/favicon.png">
   </head>
 
   <body>
+    <a href="https://github.com/thagat/latinol"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/thagat/latinol">View on GitHub</a>
+    <div class="container">
 
-          <h1 id="project_title">Latinol</h1>
-          <h2 id="project_tagline">A javascript translator from spanish to latinol</h2>
+      <div class="masthead">
+        <h3 class="muted">Laniñol</h3>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li class="active"><a href="#" class="trans">Inicio</a></li>
+                <li>
+                  <a href="https://github.com/thagat/latinol" class="trans">
+                    Github
+                  </a>
+                </li>
+                <li><a href="#about" class="trans">Descripción</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.navbar -->
+      </div>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/thagat/latinol/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/thagat/latinol/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>¡Latiñol!</h1>
+        <p class="lead trans">
+          Latiñol es una nueva propuesta de escritura para el español
+        </p>
+        <button class="btn btn-large btn-success" id="transcribe-btn">
+          Transcribir
+        </button>
+      </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="latinol" class="anchor" href="#latinol"><span class="octicon octicon-link"></span></a>latinol</h1>
+      <div class="row-fluid">
+        <div class="span6">
+          <p>
+            <textarea id="input-text">Coloca un texto para transcribirlo</textarea>
+          </p>
+        </div>
+        <div class="span6">
+          <p>
+            <textarea id="output-text"></textarea>
+          </p>
+        </div>
+      </div>
 
-<p>A javascript translator from spanish to latinol</p>
-      </section>
-    </div>
+      <hr>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Latinol maintained by <a href="https://github.com/thagat">thagat</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+      <!-- Example row of columns -->
+      <div class="row-fluid" id="about">
+        <div class="span6">
+          <h2>Español</h2>
+          <p id="description-input">
+            El español tiene muchas letras que se pronuncian igual y palabras que se pueden escribir de muchas maneras.
+            El latiñol busca arreglar esto con una nueva propuesta: Eliminar aquellas letras que se pronuncian igual que otras letras.
+          </p>
+        </div>
+        <div class="span6">
+          <h2>Latiñol</h2>
+          <p id="description-output">
+          </p>
+        </div>
+      </div>
 
-    
+      <hr>
 
+      <div class="footer">
+        <p>&copy; Thagat 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/xregexp-min.js"></script>
+    <script src="js/latinol.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
