@@ -5,6 +5,8 @@
 /*global window: false */
 /*global navigator: false */
 
+/*global XRegExp: false */
+
 var Latinol = function () {
     "use strict";
 
@@ -18,10 +20,15 @@ var Latinol = function () {
         'ci': 'si',
         'co': 'ko',
         'cu': 'ku',
+        'cr': 'kr',
+        'cl': 'kl',
         'gue': 'ge',
         'gui': 'gi',
         'ge': 'je',
         'gi': 'ji',
+        '([^cs])h': '$1',
+        'y([^aeiou])': 'i$1',
+        '^h': '',
         'll': 'y',
         'qa': 'ka',
         'que': 'ke',
@@ -32,13 +39,12 @@ var Latinol = function () {
     };
 
     this.transcribe = function (text) {
-        var searchValue, newValue, replace, self;
+        var searchValue, replace, self, regExp, replaceRule;
         self = this;
 
         replace = function (oldValue) {
-            var newValue;
+            var newValue = oldValue.replace(regExp, replaceRule);
 
-            newValue = self.rules[oldValue];
             if (self.isCapital(oldValue[0])) {
                 newValue[0] = newValue[0].toUpperCase();
             }
@@ -51,7 +57,9 @@ var Latinol = function () {
  
         for (searchValue in this.rules ) {
             if (this.rules.hasOwnProperty(searchValue)) {
-                text = text.replace(searchValue, replace);
+                regExp = new XRegExp(searchValue, 'gi');
+                replaceRule = this.rules[searchValue];
+                text = text.replace(regExp, replace);
             }
         }
 

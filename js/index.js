@@ -14,9 +14,21 @@ var App = function () {
         var self = this;
         $('#transcribe-btn').click(function () {
             self.transcribe();
+            $('.trans').each(function () {
+                var $this = $(this);
+                $this.html(self.latinol.transcribe($this.html()));
+            });
+            $('#output-text').val(this.latinol.transcribe($('#input-text').val()));
         });
+        $('#input-text').keyup(function () {
+            self.transcribe();
+        });
+
         this.transcribe();
-        $('#description-output').html(this.latinol.transcribe($('#description-input').html()));
+
+        $('#description-output').html(
+            this.latinol.transcribe($('#description-input').html())
+        );
     };
 
     this.transcribe = function () {
