@@ -1,4 +1,6 @@
-latinol
+latiñol
 =======
 
-A javascript translator from spanish to latinol
+A javascript translator from spanish to latiñol
+
+http://thagat.github.io/latinol/
