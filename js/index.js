@@ -18,21 +18,22 @@ var App = function () {
                 var $this = $(this);
                 $this.html(self.latinol.transcribe($this.html()));
             });
-            $('#output-text').val(this.latinol.transcribe($('#input-text').val()));
+            this.transcribeIO('#description-input', '#description-output');
         });
         $('#input-text').keyup(function () {
-            self.transcribe();
+            self.transcribeIO('#input-text', '#output-text', true);
         });
 
-        this.transcribe();
-
-        $('#description-output').html(
-            this.latinol.transcribe($('#description-input').html())
-        );
+        this.transcribeIO('#input-text', '#output-text');
+        this.transcribeIO('#description-input', '#description-output');
+        this.transcribeIO('#examples-input', '#examples-output');
     };
 
-    this.transcribe = function () {
-        $('#output-text').val(this.latinol.transcribe($('#input-text').val()));
+    this.transcribeIO = function (inputId, outputId, isInput) {
+        if (isInput) {
+            $(outputId).val(this.latinol.transcribe($(inputId).val()));
+        }
+        $(outputId).html(this.latinol.transcribe($(inputId).html()));
     };
 };
 
