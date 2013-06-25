@@ -13,6 +13,10 @@ var Latinol = function () {
         return letter === letter.toUpperCase();
     };
 
+    this.capitalizeAt=function(str, i) {
+        return str.substr(0, i) + str[i].toUpperCase() + str.substr(i + 1);
+    };
+
     this.rules = {
         'c([aourláóú])': 'k$1',
         'c([eiéí])': 's$1',
@@ -32,17 +36,17 @@ var Latinol = function () {
         self = this;
 
         replace = function (oldValue) {
-            var newValue = oldValue.replace(regExp, replaceRule);
+            var newValue = oldValue.replace(regExp, replaceRule), c;
 
             if (self.isCapital(oldValue[0])) {
                 if (newValue[0]) {
-                    newValue[0] = newValue[0].toUpperCase();
+                    newValue = self.capitalizeAt(newValue, 0);
                 }
             }
 
             if (self.isCapital(oldValue[oldValue.length - 1])) {
                 if (newValue[1]) {
-                    newValue[1] = newValue[1].toUpperCase();
+                    newValue = self.capitalizeAt(newValue, 1);
                 }
             }
             return newValue;
