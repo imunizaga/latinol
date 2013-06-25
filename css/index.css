@@ -104,7 +104,13 @@ textarea {
     100% {background-color: transparent;}
 }
 
+@-moz-keyframes pulse { 
+    0% {background-color: #eee595;}
+    100% {background-color: transparent;}
+}
+
 .pulse {
     -webkit-animation: pulse 3s;
+    -moz-animation: pulse 3s;
 }
 
