@@ -87,6 +87,10 @@ textarea {
     height: 200px;
 }
 
+#examples-input div{
+    text-align: right;
+}
+
 .footer {
     text-align: center;
     padding: 30px 0;

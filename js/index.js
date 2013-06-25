@@ -35,6 +35,8 @@ var App = function () {
         this.transcribeIO('#input-text', '#output-text');
         this.transcribeIO('#description-input', '#description-output');
         this.transcribeIO('#examples-input', '#examples-output');
+        this.transcribeIO('#arguments-input', '#arguments-output');
+        this.transcribeIO('#rules-input', '#rules-output');
     };
 
     this.transcribeIO = function (inputId, outputId, isInput) {
