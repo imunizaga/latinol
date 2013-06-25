@@ -13,15 +13,23 @@ var App = function () {
     this.initialize = function () {
         var self = this;
         $('#transcribe-btn').click(function () {
-            self.transcribe();
             $('.trans').each(function () {
                 var $this = $(this);
                 $this.html(self.latinol.transcribe($this.html()));
+                $this.addClass("pulse");
             });
-            this.transcribeIO('#description-input', '#description-output');
+            self.transcribeIO('#description-input', '#description-output');
         });
         $('#input-text').keyup(function () {
             self.transcribeIO('#input-text', '#output-text', true);
+        });
+
+        $('#input-text').keyup(function () {
+            self.transcribeIO('#input-text', '#output-text', true);
+        });
+        $('#input-text').click(function () {
+            this.focus();
+            this.select();
         });
 
         this.transcribeIO('#input-text', '#output-text');
