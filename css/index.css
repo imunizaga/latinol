@@ -99,18 +99,16 @@ textarea {
     background-color: #f5f5f5;
 }
 
-@-webkit-keyframes pulse { 
-    0% {background-color: #eee595;}
-    100% {background-color: transparent;}
+.dim {
+    background-color: #transparent;
+    -webkit-transition: background-color 1000ms ease-in-out;
+    -moz-transition: background-color 1000ms ease-in-out;
+    -o-transition: background-color 1000ms ease-in-out;
+    -ms-transition: background-color 1000ms ease-in-out;
+    transition: background-color 1000ms ease-in-out;
+
 }
 
-@-moz-keyframes pulse { 
-    0% {background-color: #eee595;}
-    100% {background-color: transparent;}
+.highlight {
+    background-color: #eee595;
 }
-
-.pulse {
-    -webkit-animation: pulse 3s;
-    -moz-animation: pulse 3s;
-}
-

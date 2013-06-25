@@ -16,7 +16,8 @@ var App = function () {
             $('.trans').each(function () {
                 var $this = $(this);
                 $this.html(self.latinol.transcribe($this.html()));
-                $this.addClass("pulse");
+                $this.addClass("highlight");
+                setTimeout(function () {$this.toggleClass("dim highlight");}, 10);
             });
             self.transcribeIO('#description-input', '#description-output');
         });
