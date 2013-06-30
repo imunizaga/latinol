@@ -22,7 +22,7 @@ var Latinol = function () {
         'c([eiéí])': 's$1',
         'g([eiéí])': 'j$1',
         'gu([eiéí])': 'g$1',
-        '([^cs]|^)h': '$1',
+        '\\b([^cs]|^)?h(\\S|$)': '$1$2',
         'll': 'y',
         'qu([eiéí])': 'k$1',
         'ü': 'u',
@@ -36,7 +36,7 @@ var Latinol = function () {
         self = this;
 
         replace = function (oldValue) {
-            var newValue = oldValue.replace(regExp, replaceRule), c;
+            var newValue = oldValue.replace(regExp, replaceRule);
 
             if (self.isCapital(oldValue[0])) {
                 if (newValue[0]) {
