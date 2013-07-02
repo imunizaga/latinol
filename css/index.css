@@ -91,6 +91,10 @@ textarea {
     text-align: right;
 }
 
+#comments {
+    text-align: center;
+}
+
 .footer {
     text-align: center;
     padding: 30px 0;
