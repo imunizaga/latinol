@@ -9,18 +9,49 @@
 var App = function () {
     "use strict";
     this.latinol = new Latinol();
+    this.textWarehouse = [];
+    this.currentLanguage = "es";
 
     this.initialize = function () {
-        var self = this;
+        var self = this, i;
         $('#transcribe-btn').click(function () {
-            $('.trans').each(function () {
-                var $this = $(this);
-                $this.html(self.latinol.transcribe($this.html()));
-                $this.addClass("highlight");
-                setTimeout(function () {$this.toggleClass("dim highlight");}, 10);
-            });
-            self.transcribeIO('#description-input', '#description-output');
+            var dimOnTimeout, el, text, textContainer;
+
+            dimOnTimeout= function (el) {
+                setTimeout(function () {el.toggleClass("dim highlight");}, 10);
+                setTimeout(function () {el.removeClass("dim");}, 1010);
+            };
+
+            if (self.textWarehouse.length === 0) {
+                $('.trans').each(function () {
+                    var $this = $(this);
+                    self.textWarehouse.push({
+                        el: $this, 
+                        text: $this.html()
+                    });
+                });
+            }
+
+            if (self.currentLanguage === "es") {
+                self.currentLanguage = "la";
+            } else {
+                self.currentLanguage = "es";
+            }
+            for (i = 0; i < self.textWarehouse.length; i += 1 ) { 
+                textContainer = self.textWarehouse[i];
+                el = textContainer.el;
+                text = textContainer.text;
+
+                if (self.currentLanguage === "es") {
+                    el.html(self.latinol.transcribe(text));
+                } else {
+                    el.html(text);
+                }
+                el.addClass("highlight");
+                dimOnTimeout(el);
+            }
         });
+
         $('#input-text').keyup(function () {
             self.transcribeIO('#input-text', '#output-text', true);
         });
