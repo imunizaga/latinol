@@ -6,14 +6,14 @@
 /*global navigator: false */
 
 
-var Latinol = function () {
-    "use strict";
+var Latinol = function() {
+    'use strict';
 
-    this.isCapital = function (letter) {
+    this.isCapital = function(letter) {
         return letter === letter.toUpperCase();
     };
 
-    this.capitalizeAt=function(str, i) {
+    this.capitalizeAt = function(str, i) {
         return str.substr(0, i) + str[i].toUpperCase() + str.substr(i + 1);
     };
 
@@ -31,11 +31,11 @@ var Latinol = function () {
         'y([^aeiouáóúéí]|$)': 'i$1'
     };
 
-    this.transcribe = function (text) {
+    this.transcribe = function(text) {
         var searchValue, replace, self, regExp, replaceRule;
         self = this;
 
-        replace = function (oldValue) {
+        replace = function(oldValue) {
             var newValue = oldValue.replace(regExp, replaceRule);
 
             if (self.isCapital(oldValue[0])) {
@@ -51,8 +51,8 @@ var Latinol = function () {
             }
             return newValue;
         };
- 
-        for (searchValue in this.rules ) {
+
+        for (searchValue in this.rules) {
             if (this.rules.hasOwnProperty(searchValue)) {
                 regExp = new RegExp(searchValue, 'gi');
                 replaceRule = this.rules[searchValue];
@@ -61,5 +61,45 @@ var Latinol = function () {
         }
 
         return text;
+    };
+
+    this.ignoreTags = {
+      'IFRAME': true,
+      'IMAGE': true,
+      'INPUT': true,
+      'LINK': true,
+      'META': true,
+      'SCRIPT': true,
+      'STYLE': true,
+      'NOSCRIPT': true
+    };
+
+    this.transcribePage = function() {
+      var i;
+
+      for (i = 0; i < document.children.length; i += 1) {
+        this.transcribeElement(document.children[i]);
+      }
+    };
+
+    this.transcribeElement = function(el) {
+      var i;
+
+      if (!el.innerHTML) {
+        return;
+      }
+
+      if (this.ignoreTags[el.tagName]) {
+        return;
+      }
+
+      if (!el.children.length && el.innerHTML) {
+        el.innerHTML = this.transcribe(el.innerHTML);
+        return;
+      }
+
+      for (i = 0; i < el.children.length; i += 1) {
+        this.transcribeElement(el.children[i]);
+      }
     };
 };
