@@ -10,13 +10,27 @@ http://thagat.github.io/latinol/
 * Create a new instance of the translator 
 
 ```
-var latinol = new Latinol()
+var latinol = new Latinol();
 ```
 
 * Transcribe a paragraph of plain text
 
 ```
-latinol.transcribe(text)
+latinol.transcribe('some plain text');
 ```
 
 That's it!
+
+## Transcribe a hole page
+
+Transcribe a hole page using the transcribePage method
+
+```
+latinol.transcribePage();
+```
+
+You can also transcribe an element by calling transcribeElement
+
+```
+latinol.transcribePage(document.findElementById('my-div'));
+```
