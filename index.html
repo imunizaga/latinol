@@ -47,7 +47,7 @@
       <button class="btn btn-large btn-success trans" id="transcribe-btn">
         Transcribir esta página
       </button>
-      <a class="btn btn-large btn-success" href="/js/latinol.min.js">
+      <a class="btn btn-large btn-success" href="/js/latinol.min.js" target="_blank">
         Descargar Javascript
       </a>
     </div>
@@ -55,7 +55,7 @@
     <div class="container">
       <div class="row-fluid">
         <div class="span6">
-          <h2>Español</h2>
+          <h2 class="trans">Español</h2>
           <div>
             <textarea id="input-text">Coloca un texto para transcribirlo</textarea>
           </div>
@@ -195,6 +195,39 @@
           </div>
         </div>
       </div> <!-- /row-fluid #rules-->
+
+      <hr>
+
+      <div>
+        <h4 class="trans">También se puede usar como un librería en javascript</h4>
+
+        <h2>
+          <a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uso</h2>
+
+        <ul class="task-list">
+          <li>
+            Puedes desacargar el proyecto desde este
+            <a class="" href="/js/latinol.min.js" target="_blank">
+              Link
+            </a>.
+            Además el proeycto se encuentra en <a href="https://github.com/thagat/latinol" target="_blank">github</a>.
+          </li>
+          <li>Incluye latinol.min.js en tu página.</li>
+          <li>Crea una nueva instancia del traductor.</li>
+          <li>Ahora puedes transcribir texto plano</li>
+        </ul>
+
+        <pre><code>var latinol = new Latinol();</code>
+<code>latinol.transcribe('Algo de texto plano');</code></pre>
+
+        <p>Puedes transcribir tabmién una página completa</p>
+
+        <pre><code>latinol.transcribePage(); </code></pre>
+
+        <p>O un único elemento</p>
+
+        <pre><code>latinol.transcribePage(document.findElementById('my-div'));</code></pre>
+        </div>
 
       <hr>
 
