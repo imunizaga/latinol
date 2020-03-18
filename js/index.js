@@ -12,60 +12,75 @@ var App = function() {
   this.textWarehouse = [];
   this.currentLanguage = 'es';
 
+  var inputTextSelector = '#input-text';
+
   this.initialize = function() {
-    var self = this, i;
+    var _this = this;
+    var i;
+
     $('#transcribe-btn').click(function() {
-      var dimOnTimeout, el, text, textContainer;
+      var dimOnTimeout;
+      var el;
+      var text;
+      var textContainer;
 
       dimOnTimeout = function(el) {
         setTimeout(function() {el.toggleClass('dim highlight');}, 10);
+
         setTimeout(function() {el.removeClass('dim');}, 1010);
       };
 
-      if (self.textWarehouse.length === 0) {
+      if (_this.textWarehouse.length === 0) {
         $('.trans').each(function() {
           var $this = $(this);
-          self.textWarehouse.push({
+          _this.textWarehouse.push({
             el: $this,
             text: $this.html()
           });
         });
       }
 
-      if (self.currentLanguage === 'es') {
-        self.currentLanguage = 'la';
+      if (_this.currentLanguage === 'es') {
+        _this.currentLanguage = 'la';
       } else {
-        self.currentLanguage = 'es';
+        _this.currentLanguage = 'es';
       }
 
-      for (i = 0; i < self.textWarehouse.length; i += 1) {
-        textContainer = self.textWarehouse[i];
+      for (i = 0; i < _this.textWarehouse.length; i += 1) {
+        textContainer = _this.textWarehouse[i];
         el = textContainer.el;
         text = textContainer.text;
 
-        if (self.currentLanguage === 'es') {
-          el.html(self.latinol.transcribe(text));
+        if (_this.currentLanguage === 'es') {
+          el.html(_this.latinol.transcribe(text));
         } else {
           el.html(text);
         }
+
         el.addClass('highlight');
         dimOnTimeout(el);
       }
     });
 
-    $('#input-text').keyup(function() {
-      self.transcribeIO('#input-text', '#output-text', true);
+    var text = (new URLSearchParams(window.location.search)).get('text');
+    if (text) {
+      $(inputTextSelector).val(text);
+    }
+
+    $(inputTextSelector).keyup(function() {
+      _this.transcribeIO(inputTextSelector, '#output-text', true);
     });
 
-    $('#input-text').keyup(function() {
-      self.transcribeIO('#input-text', '#output-text', true);
+    $(inputTextSelector).keyup(function() {
+      _this.transcribeIO(inputTextSelector, '#output-text', true);
     });
-    $('#input-text').click(function() {
+
+    $(inputTextSelector).click(function() {
       this.focus();
       this.select();
     });
 
-    this.transcribeIO('#input-text', '#output-text');
+    this.transcribeIO(inputTextSelector, '#output-text');
     this.transcribeIO('#description-input', '#description-output');
     this.transcribeIO('#examples-input', '#examples-output');
     this.transcribeIO('#arguments-input', '#arguments-output');
@@ -76,10 +91,10 @@ var App = function() {
     if (isInput) {
       $(outputId).val(this.latinol.transcribe($(inputId).val()));
     }
+
     $(outputId).html(this.latinol.transcribe($(inputId).html()));
   };
 };
-
 
 (function() {
   'use strict';
