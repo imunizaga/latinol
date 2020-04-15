@@ -28,7 +28,8 @@ var Latinol = function() {
         'ü': 'u',
         'q([aouáóú])': 'k$1',
         'w': 'gu',
-        'y([^aeiouáóúéí]|$)': 'i$1'
+        'y([^aeiouáóúéí]|$)': 'i$1',
+        'x': 'ks'
     };
 
     this.transcribe = function(text) {
