@@ -1,0 +1,23 @@
+{
+  "name": "latinol",
+  "version": "1.0.0",
+  "description": "A spanish transpiler to latiñol",
+  "main": "latinol.js",
+  "dependencies": {
+    "node-minify": "^3.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "./node_modules/node-minify/bin/cli.js --input latinol.js --output 'latinol.min.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thagat/latinol.git"
+  },
+  "author": "Ignacio Munizaga",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thagat/latinol/issues"
+  },
+  "homepage": "https://github.com/thagat/latinol#readme"
+}
