@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "./node_modules/node-minify/bin/cli.js --input latinol.js --output 'latinol.min.js'"
+    "build": "./node_modules/node-minify/bin/cli.js --input src/latinol.js --output 'dist/latinol.min.js'"
   },
   "repository": {
     "type": "git",
