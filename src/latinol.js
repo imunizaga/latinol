@@ -5,7 +5,6 @@
 /*global window: false */
 /*global navigator: false */
 
-
 var Latinol = function() {
     'use strict';
 
@@ -18,7 +17,8 @@ var Latinol = function() {
     };
 
     this.rules = {
-        'c([aourláóú])': 'k$1',
+        'c([aouráóú])': 'k$1',
+        'cl([aouráóú])': 'kl$1',
         'c([eiéí])': 's$1',
         'g([eiéí])': 'j$1',
         'gu([eiéí])': 'g$1',
