@@ -86,6 +86,14 @@ var Latinol = function() {
     this.transcribeElement = function(el) {
       var i;
 
+      if (el.title != '') {
+        el.title = this.transcribe(el.title);
+      }
+
+      if (el.placeholder && el.placeholder != '') {
+        el.placeholder = this.transcribe(el.placeholder);
+      }
+
       if (!el.innerHTML) {
         return;
       }
