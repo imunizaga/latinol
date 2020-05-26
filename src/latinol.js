@@ -17,6 +17,7 @@ var Latinol = function() {
     };
 
     this.rules = {
+        'cc([eiéí])': 'ks$1',
         'c([aouráóú])': 'k$1',
         'cl([aouráóú])': 'kl$1',
         'c([eiéí])': 's$1',
