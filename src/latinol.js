@@ -17,6 +17,7 @@ var Latinol = function() {
     };
 
     this.rules = {
+        'xc?': 'ks',
         'cc([eiéí])': 'ks$1',
         'c([aouráóú])': 'k$1',
         'cl([aouráóú])': 'kl$1',
@@ -29,8 +30,7 @@ var Latinol = function() {
         'ü': 'u',
         'q([aouáóú])': 'k$1',
         'w': 'gu',
-        'y([^aeiouáóúéí]|$)': 'i$1',
-        'x': 'ks'
+        'y([^aeiouáóúéí]|$)': 'i$1'
     };
 
     this.transcribe = function(text) {
