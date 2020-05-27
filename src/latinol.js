@@ -21,6 +21,7 @@ var Latinol = function() {
     'cc([eiéí])': 'ks$1',
     'c([aouráóú])': 'k$1',
     'cl([aouráóú])': 'kl$1',
+    '([aeiouáóúéí])c([^h])': '$1k$2',
     'c([eiéí])': 's$1',
     'g([eiéí])': 'j$1',
     'gu([eiéí])': 'g$1',
@@ -29,7 +30,7 @@ var Latinol = function() {
     'qu([eiéí])': 'k$1',
     'ü': 'u',
     'q([aouáóú])': 'k$1',
-    'w': 'gu',
+    'w([aeiouáóúéí])': 'gu$1',
     'y([^aeiouáóúéí]|$)': 'i$1'
   };
 
