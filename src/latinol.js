@@ -9,7 +9,7 @@ var Latinol = function() {
   'use strict';
 
   this.isCapital = function(letter) {
-    return letter === letter.toUpperCase();
+    return letter === letter.toUpperCase() && letter.match(/[a-z]/i);
   };
 
   this.capitalizeAt = function(str, i) {
@@ -22,7 +22,7 @@ var Latinol = function() {
     'c([eiéí])': 's$1',
     'c([aouráóú])': 'k$1',
     'cl([aouráóú])': 'kl$1',
-    '([aeiouáóúéí])c([^aeiouáóúéíh]|$)': '$1k$2',
+    '([aeiouáóúéí])c([^aeiouáóúéíh])': '$1k$2',
     'c([eiéí])': 's$1',
     'g([eiéí])': 'j$1',
     'gu([eiéí])': 'g$1',
