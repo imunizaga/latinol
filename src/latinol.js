@@ -19,9 +19,10 @@ var Latinol = function() {
   this.rules = {
     'xc?': 'ks',
     'cc([eiéí])': 'ks$1',
+    'c([eiéí])': 's$1',
     'c([aouráóú])': 'k$1',
     'cl([aouráóú])': 'kl$1',
-    '([aeiouáóúéí])c([^h])': '$1k$2',
+    '([aeiouáóúéí])c([^aeiouáóúéíh]|$)': '$1k$2',
     'c([eiéí])': 's$1',
     'g([eiéí])': 'j$1',
     'gu([eiéí])': 'g$1',
