@@ -3,4 +3,4 @@ latiñol
 
 A javascript translator from spanish to latiñol
 
-http://thagat.github.io/latinol/
+http://imunizaga.github.io/latinol/
